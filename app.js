@@ -2,9 +2,9 @@
 let amigos = [];
 
 // Função para agregar um nome
-function agregarAmigo() {
+function adicionarAmigo() {
     let inputAmigo = document.getElementById('amigo');
-    let nomeAmigo = inputAmigo.ariaValueMax.trim();
+    let nomeAmigo = inputAmigo.value.trim();
 
     // Validar campo vazio
     if(nome == ''){
@@ -22,7 +22,7 @@ function agregarAmigo() {
     amigos.push(nomeAmigo);
 
     // limpa o campo entrada
-    inputAmigo.ariaValu == "";
+    inputAmigo.value == "";
 
     // Atualiza a lista
     atualizarLista() ;
@@ -45,3 +45,22 @@ function agregarAmigo() {
 
     }
 
+
+// Função para selecionar um nome aleatório
+
+function sortearAmigo() {
+    //Valida se tem algo digitado
+    if(amigos.length == 0){
+        alert("Não tem nenhum nome adicionado. Por favor, digite um nome");
+        return;
+    }
+
+    //Gerador aleatório
+    let geradorAleatorio = Math.floor(Math.random() * amigos.length);
+
+    //Obtem o nome sorteado
+    let amigoSorteado = amigos[geradorAleatorio];
+
+    //Mostra o resultado
+    let resultado = document.getElementById('resultado');
+}
