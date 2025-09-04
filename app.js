@@ -12,6 +12,12 @@ function adicionarAmigo() {
         return;
     }
 
+    // Verifica se é um número inteiro ou float
+    if (!/^[A-Za-zÀ-ÿ\s]+$/.test(nomeAmigo)) {
+        alert('Números não são permitidos. Digite apenas nomes.');
+        return;
+    }
+
     // Validar duplicado
     if (amigos.includes(nomeAmigo)) {
         alert(`O nome "${nomeAmigo}" já está na lista.`);
@@ -32,7 +38,12 @@ function adicionarAmigo() {
 // Função para atualizar a lista
 function atualizarLista() {
     const listaAmigos = document.getElementById('listaAmigos');
-    listaAmigos.innerHTML = amigos.map(nome => `<li>${nome}</li>`).join("");
+    listaAmigos.innerHTML = amigos.map((nome, index) => `
+  <li>
+    ${nome}
+    <button onclick="removerAmigo(${index})" class="btn-remove">❌</button>
+  </li>
+`).join("");
 }
 
 // Função para sortear um amigo
@@ -55,4 +66,11 @@ function sortearAmigo() {
     // Exibir resultado
     const resultado = document.getElementById('resultado');
     resultado.innerHTML = `Amigo Sorteado: <strong>${amigoSorteado}</strong>`;
+}
+
+// Função para remover um Amigo da lista
+function removerAmigo(index) {
+    amigos.splice(index, 1);
+    atualizarLista();
+    document.getElementById('resultado').innerHTML = "";
 }
