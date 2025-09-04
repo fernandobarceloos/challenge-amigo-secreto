@@ -66,6 +66,9 @@ function sortearAmigo() {
     // Exibir resultado
     const resultado = document.getElementById('resultado');
     resultado.innerHTML = `Amigo Sorteado: <strong>${amigoSorteado}</strong>`;
+
+    const texto = `O amigo sorteado é ${amigoSorteado}`;
+    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate: 1.2});
 }
 
 // Função para remover um Amigo da lista
